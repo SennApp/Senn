@@ -5,13 +5,14 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <ImageView
         android:id="@+id/imgSymbol"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="120dp"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="112dp"
         android:contentDescription=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,13 +20,90 @@
         app:srcCompat="@drawable/symbol" />
 
     <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:letterSpacing="0.1"
-        android:text="senn"
-        android:textColor="#38E4AE"
-        android:textSize="40sp"
+        android:text="@string/activity_main_title"
+        android:textColor="@color/primary"
+        android:textSize="56sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgSymbol" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle">
+
+        <Button
+            android:id="@+id/btnPlay"
+            android:layout_width="160dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_shape_primary"
+            android:text="Play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnRanking"
+            android:layout_width="160dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_shape"
+            android:text="Ranking"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnPlay" />
+
+        <Button
+            android:id="@+id/btnGuide"
+            android:layout_width="160dp"
+            android:layout_height="48dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/button_shape"
+            android:text="Guide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnRanking" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCredit"
+                android:layout_width="72dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/button_shape"
+                android:text="Credit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnRanking" />
+
+            <Button
+                android:id="@+id/btnQuit"
+                android:layout_width="72dp"
+                android:layout_height="48dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/button_shape"
+                android:text="Quit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/btnRanking" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

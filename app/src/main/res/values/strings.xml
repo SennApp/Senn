@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Senn</string>
-    <string name="app_name_lower">senn</string>
     <string name="app_version">1.0</string>
+    <string name="activity_main_title">senn</string>
 </resources>
