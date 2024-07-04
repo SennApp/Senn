@@ -8,7 +8,7 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imageSymbol"
+        android:id="@+id/imgSymbol"
         android:layout_width="128dp"
         android:layout_height="128dp"
         android:layout_marginTop="120dp"
@@ -27,5 +27,5 @@
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageSymbol" />
+        app:layout_constraintTop_toBottomOf="@id/imgSymbol" />
 </androidx.constraintlayout.widget.ConstraintLayout>
