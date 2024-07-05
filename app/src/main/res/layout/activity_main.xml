@@ -5,27 +5,122 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/imgSymbol"
-        android:layout_width="128dp"
-        android:layout_height="128dp"
-        android:layout_marginTop="120dp"
-        android:contentDescription=""
+        android:id="@+id/imageSymbol"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_marginTop="108dp"
+        android:importantForAccessibility="no"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/symbol" />
 
     <TextView
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/m_plus_1p"
         android:letterSpacing="0.1"
-        android:text="senn"
-        android:textColor="#38E4AE"
-        android:textSize="40sp"
+        android:text="@string/activity_main_title"
+        android:textColor="@color/primary"
+        android:textFontWeight="500"
+        android:textSize="56sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgSymbol" />
+        app:layout_constraintTop_toBottomOf="@id/imageSymbol" />
+
+    <!--  Buttons  -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle">
+
+        <ImageButton
+            android:id="@+id/buttonPlay"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/selector_button_primary"
+            android:contentDescription="@string/activity_main_button_play"
+            android:elevation="1dp"
+            android:scaleType="center"
+            android:src="@drawable/image_play"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/buttonLeaderboard"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/selector_button"
+            android:contentDescription="@string/activity_main_button_leaderboard"
+            android:elevation="1dp"
+            android:scaleType="center"
+            android:src="@drawable/image_leaderboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonPlay" />
+
+        <ImageButton
+            android:id="@+id/buttonGuide"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginVertical="8dp"
+            android:background="@drawable/selector_button"
+            android:contentDescription="@string/activity_main_button_guide"
+            android:elevation="1dp"
+            android:scaleType="center"
+            android:src="@drawable/image_guide"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/buttonLeaderboard" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/transparent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/buttonCredit"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/selector_button"
+                android:contentDescription="@string/activity_main_button_credit"
+                android:elevation="1dp"
+                android:src="@drawable/image_credit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonGuide" />
+
+            <ImageButton
+                android:id="@+id/buttonQuit"
+                android:layout_width="90dp"
+                android:layout_height="60dp"
+                android:layout_marginVertical="8dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/selector_button"
+                android:contentDescription="@string/activity_main_button_quit"
+                android:elevation="1dp"
+                android:src="@drawable/image_quit"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/buttonCredit" />
+        </LinearLayout>
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
