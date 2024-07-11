@@ -14,7 +14,7 @@
             android:name=".GuideActivity"
             android:exported="false" />
         <activity
-            android:name=".GameActivity"
+            android:name=".PlayActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
@@ -25,6 +25,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>
