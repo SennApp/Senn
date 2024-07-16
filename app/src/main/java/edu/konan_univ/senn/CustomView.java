@@ -29,7 +29,7 @@ public class CustomView extends View {
 
     @Override
     protected void onDraw(@NonNull Canvas canvas) {
-        if (points.size() < 2) {
+        if (!isSegmentDrawable()) {
             return;
         }
         paint.setStrokeWidth(5);
@@ -77,21 +77,25 @@ public class CustomView extends View {
     }
 
     private void updateDist() {
-        if (points.size() >= 2) {
-            PointF current = points.get(points.size() - 1);
-            PointF prev = points.get(points.size() - 2);
-            dist += calcDist(current, prev);
+        if (!isSegmentDrawable()) {
+            return;
         }
+        PointF current = points.get(points.size() - 1);
+        PointF prev = points.get(points.size() - 2);
+        dist += calcDist(current, prev);
     }
 
     private float calcDist(PointF a, PointF b) {
-        float cmPerInches = 2.54F;
         DisplayMetrics metrics = getResources().getDisplayMetrics();
-        float inchesX = Math.abs(a.x - b.x) / metrics.xdpi;
-        float inchesY = Math.abs(a.y - b.y) / metrics.ydpi;
-        float cmX = inchesX * cmPerInches;
-        float cmY = inchesY * cmPerInches;
-//        Log.d("calcDist", "X: " + a.x + "," + " " + "Y: " + a.y);
-        return (float) Math.sqrt(Math.pow(cmX, 2) + Math.pow(cmY, 2));
+        float cmPerInches = 2.54F;
+        float inchesDistX = Math.abs(a.x - b.x) / metrics.xdpi;
+        float inchesDistY = Math.abs(a.y - b.y) / metrics.ydpi;
+        float cmDistX = inchesDistX * cmPerInches;
+        float cmDistY = inchesDistY * cmPerInches;
+        return (float) Math.sqrt(Math.pow(cmDistX, 2) + Math.pow(cmDistY, 2));
+    }
+
+    private boolean isSegmentDrawable() {
+        return points.size() >= 2;
     }
 }
