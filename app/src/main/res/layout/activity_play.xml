@@ -58,10 +58,24 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+            android:orientation="vertical"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:text="今年（２０２４年）は令和□年である。" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="30dp"
+            android:scaleX="1.5"
+            android:scaleY="1.5"
+            android:text="  (□に入る数字cmの線を書いてね！)" />
     </LinearLayout>
 
     <edu.konan_univ.senn.CustomView
