@@ -1,6 +1,8 @@
 package edu.konan_univ.senn;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,4 +23,10 @@ public class GuideActivity extends AppCompatActivity {
             return insets;
         });
     }
+
+    public void onBack2Clicked(View view) {
+        Intent intent = new Intent(GuideActivity.this, MainActivity.class);
+        startActivity(intent);
+    }
+
 }
