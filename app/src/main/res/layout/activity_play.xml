@@ -62,8 +62,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:orientation="vertical"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
+
             android:text="今年（２０２４年）は令和□年である。" />
 
         <TextView
@@ -71,10 +70,8 @@
             android:layout_width="256dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
-            android:scaleX="1.5"
-            android:scaleY="1.5"
             android:text="  (□に入る数字cmの線を書いてね！)" />
     </LinearLayout>
 
