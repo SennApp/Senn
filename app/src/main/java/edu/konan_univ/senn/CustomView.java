@@ -48,6 +48,7 @@ public class CustomView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
+        double accuracy=0;
         PointF point = new PointF(event.getX(), event.getY());
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
@@ -58,7 +59,8 @@ public class CustomView extends View {
                 performClick();
                 drawing = false;
                 Log.d("CustomView", dist + "cm");
-
+                accuracy=dist/6*100;
+                Log.d("result", accuracy + "%");
                 invalidate(); // 画面を更新
                 break;
             }

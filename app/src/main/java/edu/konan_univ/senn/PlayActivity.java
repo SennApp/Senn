@@ -1,11 +1,13 @@
 package edu.konan_univ.senn;
 
+import android.content.Intent;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.PointF;
 import android.graphics.RectF;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.Button;
 
 import androidx.activity.EdgeToEdge;
@@ -51,6 +53,11 @@ public class PlayActivity extends AppCompatActivity {
                     return ViewCompat.onApplyWindowInsets(view, windowInsets);
                 });
 
+    }
+
+    public void onBackClicked(View view) {
+        Intent intent = new Intent(PlayActivity.this, MainActivity.class);
+        startActivity(intent);
     }
 
 }

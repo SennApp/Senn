@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@color/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PlayActivity">
@@ -23,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
             android:layout_marginTop="20dp"
+            android:onClick="onBackClicked"
             android:text="＜" />
 
         <TextView
@@ -37,15 +39,15 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
+            android:layout_marginStart="40dp"
             android:layout_marginTop="10dp"
-            android:text="連続正解！" />
+            android:text="最高記録：" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/quiz"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="160dp"
         android:layout_marginStart="1dp"
         android:layout_marginTop="121dp"
         android:layout_marginEnd="1dp"
@@ -57,23 +59,34 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
+            android:layout_marginStart="80dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua?" />
+            android:orientation="vertical"
+
+            android:text="今年（２０２４年）は令和□年である。" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="256dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="80dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:text="  (□に入る数字cmの線を書いてね！)" />
     </LinearLayout>
 
     <edu.konan_univ.senn.CustomView
         android:id="@+id/customView"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quiz"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintVertical_bias="0.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

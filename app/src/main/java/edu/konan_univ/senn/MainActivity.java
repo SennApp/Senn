@@ -52,4 +52,20 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(MainActivity.this, PlayActivity.class);
         startActivity(intent);
     }
+//    public void onLeaderClicked(View view) {
+//        Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
+//        startActivity(intent);
+//    }
+    public void onGuideClicked(View view) {
+        Intent intent = new Intent(MainActivity.this, GuideActivity.class);
+        startActivity(intent);
+    }
+//    public void onCreditClicked(View view) {
+//        Intent intent = new Intent(MainActivity.this, CreditActivity.class);
+//        startActivity(intent);
+//    }
+//      public void onQuitClicked(View view) {
+//          super.onDestroy();
+//      }
+
 }
