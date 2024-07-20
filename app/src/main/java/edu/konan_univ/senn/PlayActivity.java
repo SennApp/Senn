@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +19,12 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import edu.konan_univ.senn.database.DatabaseHelper;
+import edu.konan_univ.senn.database.models.Question;
+
 public class PlayActivity extends AppCompatActivity {
+    int questionId = 0;
+    private TextView sentenceView = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,22 @@ public class PlayActivity extends AppCompatActivity {
                     return ViewCompat.onApplyWindowInsets(view, windowInsets);
                 });
 
+        sentenceView = findViewById(R.id.sentence);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        DatabaseHelper.getInstance().getQuestionRef(questionId).get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                Question question = task.getResult().getValue(Question.class);
+                if (sentenceView == null || question == null) {
+                    return;
+                }
+                sentenceView.setText(question.sentence);
+            }
+        });
     }
 
     public void onBackClicked(View view) {

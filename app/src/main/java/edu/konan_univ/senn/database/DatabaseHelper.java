@@ -28,6 +28,10 @@ public class DatabaseHelper {
         return reference.child("questions");
     }
 
+    public DatabaseReference getQuestionRef(@NotNull int questionId) {
+        return getQuestionsRef().child(String.valueOf(questionId));
+    }
+
     public DatabaseReference getPrecisionsRef() {
         return reference.child("precisions");
     }
