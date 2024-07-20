@@ -24,6 +24,8 @@ import edu.konan_univ.senn.database.models.Question;
 
 public class PlayActivity extends AppCompatActivity {
     int questionId = 0;
+    float dist=0.0F;
+    double accuracy=0.0;
     private TextView sentenceView = null;
 
     @Override
@@ -80,6 +82,11 @@ public class PlayActivity extends AppCompatActivity {
     public void onBackClicked(View view) {
         Intent intent = new Intent(PlayActivity.this, MainActivity.class);
         startActivity(intent);
+    }
+
+    private float getDist(){
+        CustomView view=findViewById(R.id.customView);
+        return view.getDistance();
     }
 
 }
