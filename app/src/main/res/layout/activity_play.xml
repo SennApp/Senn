@@ -57,14 +57,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/sentence"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
             android:layout_marginTop="30dp"
             android:layout_marginEnd="30dp"
             android:orientation="vertical"
-
-            android:text="今年（２０２４年）は令和□年である。" />
+            android:text="ぬるぽ" />
 
         <TextView
             android:id="@+id/textView"
@@ -73,7 +73,7 @@
             android:layout_marginStart="80dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="30dp"
-            android:text="  (□に入る数字cmの線を書いてね！)" />
+            android:text="  (〇に入る数字cmの線を書いてね！)" />
     </LinearLayout>
 
     <edu.konan_univ.senn.CustomView
