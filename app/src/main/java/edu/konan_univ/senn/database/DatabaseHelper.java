@@ -27,15 +27,19 @@ public class DatabaseHelper {
     public DatabaseReference getQuestionsRef() {
         return reference.child("questions");
     }
-
+  
     public DatabaseReference getQuestionRef(@NotNull int questionId) {
         return getQuestionsRef().child(String.valueOf(questionId));
     }
 
-    public DatabaseReference getPrecisionsRef() {
-        return reference.child("precisions");
+    public DatabaseReference getStatisticsRef() {
+        return reference.child("statistics");
     }
 
+    public DatabaseReference getPrecisionRef(int question) {
+        return getStatisticsRef().child(String.valueOf(question));    
+    }
+  
     public static DatabaseHelper getInstance() {
         if (instance == null) {
             instance = new DatabaseHelper();
