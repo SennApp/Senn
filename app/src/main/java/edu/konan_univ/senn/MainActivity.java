@@ -3,6 +3,7 @@ package edu.konan_univ.senn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -75,20 +76,17 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onLeaderClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
-        startActivity(intent);
+        Toast.makeText(this, "実装予定です！", Toast.LENGTH_SHORT).show();
     }
 
     public void onGuideClicked(View view) {
-        Intent intent = new Intent(MainActivity.this, GuideActivity.class);
-        startActivity(intent);
+        Toast.makeText(this, "実装予定です！", Toast.LENGTH_SHORT).show();
     }
 
-//    public void onCreditClicked(View view) {
-//        Intent intent = new Intent(MainActivity.this, CreditActivity.class);
-//        startActivity(intent);
-//    }
-//
+    public void onCreditClicked(View view) {
+        Toast.makeText(this, "実装予定です！", Toast.LENGTH_SHORT).show();
+    }
+
     public void onQuitClicked(View view) {
         finish();
     }
