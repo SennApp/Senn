@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Sizes -->
+    <dimen name="header_width">0dp</dimen>
+    <dimen name="header_height">108dp</dimen>
+    <dimen name="button_size">48dp</dimen>
+
+    <!-- Font -->
+    <dimen name="font_bold">700</dimen>
+    <dimen name="font_medium">500</dimen>
+    <dimen name="font_regular">400</dimen>
+    <dimen name="font_light">300</dimen>
+
+    <!-- Text -->
+    <dimen name="text_small">16sp</dimen>
+    <dimen name="text_normal">18sp</dimen>
+    <dimen name="text_large">28sp</dimen>
+    <dimen name="text_spacing_wide">0.08</dimen>
+    <dimen name="text_spacing_wider">0.12</dimen>
+    <dimen name="text_spacing_widest">0.16</dimen>
+
+    <!-- Spacings -->
+    <dimen name="spacing_large">28dp</dimen>
+    <dimen name="spacing_normal">20dp</dimen>
+    <dimen name="spacing_small">16dp</dimen>
+
+    <!-- Radius -->
+    <dimen name="radius_normal">4dp</dimen>
+    <dimen name="radius_large">16dp</dimen>
+
+    <!-- Elevation -->
+    <dimen name="elevation_normal">4dp</dimen>
+</resources>

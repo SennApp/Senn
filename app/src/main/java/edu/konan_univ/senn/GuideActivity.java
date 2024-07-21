@@ -1,6 +1,5 @@
 package edu.konan_univ.senn;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -17,7 +16,7 @@ public class GuideActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_guide);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.container), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
@@ -25,8 +24,6 @@ public class GuideActivity extends AppCompatActivity {
     }
 
     public void onBack2Clicked(View view) {
-        Intent intent = new Intent(GuideActivity.this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
-
 }

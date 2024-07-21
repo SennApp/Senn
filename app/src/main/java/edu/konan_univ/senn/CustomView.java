@@ -13,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 
 public class CustomView extends View {
@@ -24,11 +23,14 @@ public class CustomView extends View {
     private float distance = 0.0F;
     private boolean drawing = true;
 
-    private final HashSet<OnAnswerListener> listeners;
+    // Event listeners
+    private OnDrawStartListener onDrawStartListener;
+    private OnDrawFinishListener onDrawFinishListener;
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        listeners = new HashSet<>();
+        onDrawStartListener = null;
+        onDrawFinishListener = null;
     }
 
     @Override
@@ -56,14 +58,18 @@ public class CustomView extends View {
 
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
+                if (onDrawStartListener != null) {
+                    onDrawStartListener.onDrawStart();
+                }
                 invalidate(); // 画面を更新
                 break;
             }
             case MotionEvent.ACTION_UP: {
                 drawing = false;
 
-                listeners.forEach(listener -> listener.onAnswer(distance));
-
+                if (onDrawFinishListener != null) {
+                    onDrawFinishListener.onDrawFinish(distance);
+                }
                 performClick();
                 invalidate(); // 画面を更新
                 break;
@@ -105,15 +111,30 @@ public class CustomView extends View {
         return points.size() >= 2;
     }
 
-    public void addOnAnswerListener(OnAnswerListener listener) {
-        listeners.add(listener);
+    public void setOnDrawStartListener(OnDrawStartListener listener) {
+        onDrawStartListener = listener;
     }
 
-    public void removeOnAnswerListener(OnAnswerListener listener) {
-        listeners.remove(listener);
+    public void setOnDrawFinishListener(OnDrawFinishListener listener) {
+        onDrawFinishListener = listener;
     }
 
-    public float getDistance(){
-        return distance;
+    public void reset() {
+        clearPoints();
+        resetDistance();
+        setDrawing(true);
+        invalidate();
+    }
+
+    private void setDrawing(boolean drawing) {
+        this.drawing = drawing;
+    }
+
+    private void resetDistance() {
+        distance = 0.0F;
+    }
+
+    private void clearPoints() {
+        points.clear();
     }
 }

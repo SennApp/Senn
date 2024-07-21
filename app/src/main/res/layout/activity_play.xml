@@ -2,91 +2,100 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:background="@color/background"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/background"
     tools:context=".PlayActivity">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="1dp"
-        android:orientation="horizontal"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="@dimen/header_width"
+        android:layout_height="@dimen/header_height"
+        android:layout_margin="@dimen/spacing_normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
+        <Space
+            android:id="@+id/buttonPause"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
             android:onClick="onBackClicked"
-            android:text="＜" />
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/questionNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="20dp"
-            android:scaleX="2"
-            android:scaleY="2"
-            android:text="Ｑ１" />
+            android:fontFamily="@font/m_plus_1p_medium"
+            android:letterSpacing="@dimen/text_spacing_wide"
+            android:text="@string/question_number_sample"
+            android:textColor="@color/black_75"
+            android:textSize="@dimen/text_large"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/space"
+            app:layout_constraintStart_toEndOf="@+id/buttonPause"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
-            android:text="最高記録：" />
-    </LinearLayout>
+        <Space
+            android:id="@+id/space"
+            android:layout_width="@dimen/button_size"
+            android:layout_height="@dimen/button_size"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <LinearLayout
-        android:id="@+id/quiz"
-        android:layout_width="match_parent"
+        android:id="@+id/question"
+        android:layout_width="0dp"
         android:layout_height="160dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="121dp"
-        android:layout_marginEnd="1dp"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@drawable/card_primary_darker_background"
         android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/header">
 
         <TextView
             android:id="@+id/sentence"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/spacing_large"
+            android:fontFamily="@font/m_plus_1p_medium"
             android:orientation="vertical"
-            android:text="ぬるぽ" />
+            android:text="@string/question_sentence_sample"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_normal" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="256dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="80dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="30dp"
-            android:text="  (〇に入る数字cmの線を書いてね！)" />
     </LinearLayout>
 
     <edu.konan_univ.senn.CustomView
         android:id="@+id/customView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/white"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@drawable/background_drawing_area"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/quiz"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/question" />
 
+    <TextView
+        android:id="@+id/drawingHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/m_plus_1p_medium"
+        android:text="@string/drawing_area_hint"
+        android:textColor="@color/black_25"
+        android:textSize="@dimen/text_normal"
+        app:layout_constraintBottom_toBottomOf="@+id/customView"
+        app:layout_constraintEnd_toEndOf="@+id/customView"
+        app:layout_constraintStart_toStartOf="@+id/customView"
+        app:layout_constraintTop_toTopOf="@+id/customView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

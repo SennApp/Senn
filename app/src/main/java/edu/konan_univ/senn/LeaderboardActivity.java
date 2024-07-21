@@ -1,7 +1,5 @@
 package edu.konan_univ.senn;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,12 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import edu.konan_univ.senn.database.DatabaseHelper;
 import edu.konan_univ.senn.database.models.Precision;
@@ -29,11 +22,14 @@ import edu.konan_univ.senn.database.models.User;
 import edu.konan_univ.senn.database.models.UserPrecision;
 
 public class LeaderboardActivity extends AppCompatActivity {
-    private int questionId = 0;
-    public List<UserPrecision> data;
-    Precision precision = null;
+
     private FirebaseAuth auth;
 
+    private int questionId = 0;
+
+    public List<UserPrecision> data;
+
+    private Precision precision = null;
 
     @Override
     protected void onStart() {
@@ -83,7 +79,7 @@ public class LeaderboardActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_leaderboard);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.container), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;

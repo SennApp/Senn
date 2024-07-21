@@ -1,4 +1,5 @@
 <resources>
+    <!-- Manifest -->
     <string name="app_name">Senn</string>
     <string name="app_version">1.0</string>
     <string name="activity_main_title">senn</string>
@@ -7,4 +8,9 @@
     <string name="activity_main_button_guide">Guide</string>
     <string name="activity_main_button_credit">Credit</string>
     <string name="activity_main_button_quit">Quit</string>
+
+    <!-- Question -->
+    <string name="question_number_sample">問題1</string>
+    <string name="question_sentence_sample">「世間がいろいろと噂をするのも一時のこと。」という意味のことわざ。「人のうわさも〇日」?</string>
+    <string name="drawing_area_hint">線をここに引く</string>
 </resources>
