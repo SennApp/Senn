@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-//    public void onLeaderClicked(View view) {
-//        Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
-//        startActivity(intent);
-//    }
+    public void onLeaderClicked(View view) {
+        Intent intent = new Intent(MainActivity.this, LeaderboardActivity.class);
+        startActivity(intent);
+    }
 
     public void onGuideClicked(View view) {
         Intent intent = new Intent(MainActivity.this, GuideActivity.class);

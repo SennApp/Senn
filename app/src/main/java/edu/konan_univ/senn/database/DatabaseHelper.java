@@ -28,8 +28,12 @@ public class DatabaseHelper {
         return reference.child("questions");
     }
 
-    public DatabaseReference getPrecisionsRef() {
-        return reference.child("precisions");
+    public DatabaseReference getStatisticsRef() {
+        return reference.child("statistics");
+    }
+
+    public DatabaseReference getPrecisionRef(int question) {
+        return getStatisticsRef().child(String.valueOf(question));
     }
 
     public static DatabaseHelper getInstance() {
