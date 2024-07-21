@@ -1,14 +1,9 @@
 package edu.konan_univ.senn;
 
 import android.content.Intent;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.PointF;
-import android.graphics.RectF;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,14 +14,20 @@ import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.google.firebase.database.DataSnapshot;
+
+import java.util.Objects;
+
 import edu.konan_univ.senn.database.DatabaseHelper;
 import edu.konan_univ.senn.database.models.Question;
 
 public class PlayActivity extends AppCompatActivity {
-    int questionId = 0;
-    float dist=0.0F;
-    double accuracy=0.0;
+
+    private static final String TAG = "PlayActivity";
+
     private TextView sentenceView = null;
+
+    private int questionId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,36 +39,21 @@ public class PlayActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-        WindowInsetsControllerCompat windowInsetsController =
-                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-        // Configure the behavior of the hidden system bars.
-        windowInsetsController.setSystemBarsBehavior(
-                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        );
-
-        // Add a listener to update the behavior of the toggle fullscreen button when
-        // the system bars are hidden or revealed.
-        ViewCompat.setOnApplyWindowInsetsListener(
-                getWindow().getDecorView(),
-                (view, windowInsets) -> {
-                    // You can hide the caption bar even when the other system bars are visible.
-                    // To account for this, explicitly check the visibility of navigationBars()
-                    // and statusBars() rather than checking the visibility of systemBars().
-                    if (windowInsets.isVisible(WindowInsetsCompat.Type.navigationBars())
-                            || windowInsets.isVisible(WindowInsetsCompat.Type.statusBars())) {
-                        // Hide both the status bar and the navigation bar.
-                        windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
-                    }
-                    return ViewCompat.onApplyWindowInsets(view, windowInsets);
-                });
-
+        WindowInsetsControllerCompat windowInsetsController = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+        ViewCompat.setOnApplyWindowInsetsListener(getWindow().getDecorView(), (view, windowInsets) -> {
+            if (windowInsets.isVisible(WindowInsetsCompat.Type.navigationBars()) || windowInsets.isVisible(WindowInsetsCompat.Type.statusBars())) {
+                windowInsetsController.hide(WindowInsetsCompat.Type.systemBars());
+            }
+            return ViewCompat.onApplyWindowInsets(view, windowInsets);
+        });
         sentenceView = findViewById(R.id.sentence);
-
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        CustomView view = findViewById(R.id.customView);
         DatabaseHelper.getInstance().getQuestionRef(questionId).get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 Question question = task.getResult().getValue(Question.class);
@@ -75,6 +61,10 @@ public class PlayActivity extends AppCompatActivity {
                     return;
                 }
                 sentenceView.setText(question.sentence);
+                view.addOnAnswerListener(distance -> {
+                    float accuracy = (distance / question.answer) * 100.0F;
+                    Log.d(TAG, "Accuracy: " + accuracy + "%");
+                });
             }
         });
     }
@@ -83,10 +73,4 @@ public class PlayActivity extends AppCompatActivity {
         Intent intent = new Intent(PlayActivity.this, MainActivity.class);
         startActivity(intent);
     }
-
-    private float getDist(){
-        CustomView view=findViewById(R.id.customView);
-        return view.getDistance();
-    }
-
 }
