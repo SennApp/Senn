@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "406064769226",
+    "project_id": "senn-c2c8f",
+    "storage_bucket": "senn-c2c8f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:406064769226:android:ce7e2e8131d6ad80b0ec33",
+        "android_client_info": {
+          "package_name": "edu.konan_univ.senn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa2t_0STp1UqMkTcXb_NzbY1Op89x5R4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
