@@ -6,7 +6,6 @@ import android.graphics.Paint;
 import android.graphics.PointF;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -14,17 +13,22 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class CustomView extends View {
 
-    private final List<PointF> points = new ArrayList<>();
     private final Paint paint = new Paint();
+
+    private final List<PointF> points = new ArrayList<>();
+    private float distance = 0.0F;
     private boolean drawing = true;
-    private float dist = 0.0F;
+
+    private final HashSet<OnAnswerListener> listeners;
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+        listeners = new HashSet<>();
     }
 
     @Override
@@ -48,19 +52,19 @@ public class CustomView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-//        double accuracy=0;
         PointF point = new PointF(event.getX(), event.getY());
+
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN: {
                 invalidate(); // 画面を更新
                 break;
             }
             case MotionEvent.ACTION_UP: {
-                performClick();
                 drawing = false;
-                Log.d("CustomView", dist + "cm");
-//                accuracy=dist/6*100;
-//                Log.d("result", accuracy + "%");
+
+                listeners.forEach(listener -> listener.onAnswer(distance));
+
+                performClick();
                 invalidate(); // 画面を更新
                 break;
             }
@@ -69,7 +73,7 @@ public class CustomView extends View {
                     break;
                 }
                 points.add(point); // 点を配列に追加
-                updateDist();
+                updateDistance();
 
                 invalidate(); // 画面を更新
                 break;
@@ -78,16 +82,16 @@ public class CustomView extends View {
         return true;
     }
 
-    private void updateDist() {
+    private void updateDistance() {
         if (!isSegmentDrawable()) {
             return;
         }
         PointF current = points.get(points.size() - 1);
         PointF prev = points.get(points.size() - 2);
-        dist += calcDist(current, prev);
+        distance += calcDistance(current, prev);
     }
 
-    private float calcDist(PointF a, PointF b) {
+    private float calcDistance(PointF a, PointF b) {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         float cmPerInches = 2.54F;
         float inchesDistX = Math.abs(a.x - b.x) / metrics.xdpi;
@@ -101,8 +105,15 @@ public class CustomView extends View {
         return points.size() >= 2;
     }
 
-    public float getDistance(){
-        return dist;
+    public void addOnAnswerListener(OnAnswerListener listener) {
+        listeners.add(listener);
     }
 
+    public void removeOnAnswerListener(OnAnswerListener listener) {
+        listeners.remove(listener);
+    }
+
+    public float getDistance(){
+        return distance;
+    }
 }

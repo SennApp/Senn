@@ -7,12 +7,12 @@ public class Question {
 
     public String sentence;
 
-    public Double answer;
+    public Float answer;
 
     public Question() {
     }
 
-    public Question(String sentence, Double answer) {
+    public Question(String sentence, Float answer) {
         this.sentence = sentence;
         this.answer = answer;
     }
